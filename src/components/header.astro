@@ -6,14 +6,57 @@
     <a href="#home" class="logo">
         Luis
         <span> Lopez </span>
-        <i class="bx bx-menu" id="menu-icon"></i>
     </a>
+    <i class="bx bx-menu" id="menu-icon"></i>
 
     <nav class="navbar">
-        <a href="#home" class="active"> Home </a>
-        <a href="#educacion"> Educacion </a>
-        <a href="#servicios"> Servicios </a>
-        <a href="#testimonios"> Testimonios </a>
-        <a href="#contacto"> Conctacto </a>
+        <a href="#home" class="active"> ¿Quien soy? </a>
+        <a href="#education"> Educacion </a>
+        <a href="#services"> Servicios </a>
+        <a href="#testimonials"> Testimonios </a>
+        <a href="#contact"> Conctacto </a>
     </nav>
 </header>
+
+<script>
+    let menuIcon = document.querySelector("#menu-icon") as HTMLElement;
+    let navbar = document.querySelector(".navbar") as HTMLElement;
+    let sections = document.querySelectorAll("section");
+    let navLinks = document.querySelectorAll("header nav a");
+    console.log(navbar);
+    window.onscroll = () => {
+        sections.forEach((sec) => {
+            const section = sec as HTMLElement;
+
+            let top = window.scrollY;
+            let offset = section.offsetTop - 150;
+            let height = section.offsetHeight;
+            let id = sec.getAttribute("id");
+
+            if (top >= offset && top < offset + height) {
+                navLinks.forEach((links) => {
+                    let linksHtml = links as HTMLElement;
+
+                    linksHtml.classList.remove("active");
+
+                    let doc = document.querySelector(
+                        `header nav a[href*="${id}"]`,
+                    ) as HTMLElement;
+                    doc.classList.add("active");
+                });
+            }
+        });
+    };
+
+    menuIcon.onclick = () => {
+        menuIcon.classList.toggle("bx-x");
+        navbar.classList.toggle("active");
+
+        // Alternar la visibilidad de la navbar
+        if (navbar.style.display === "block") {
+            navbar.style.display = "none"; // Ocultar
+        } else {
+            navbar.style.display = "block"; // Mostrar
+        }
+    };
+</script>
