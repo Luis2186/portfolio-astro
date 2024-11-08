@@ -1,45 +1,55 @@
+---
+import dataUser from "../store/dataUser";
+
+// Acceder al store y leer el valor de `fullName`
+const {
+    presentation,
+    firstName,
+    secondName,
+    firstSurname,
+    secondSurname,
+    digitalPlataforms,
+} = dataUser;
+
+const fullName =
+    firstName + " " + secondName + " " + firstSurname + " " + secondSurname;
+---
+
 <section class="home" id="home">
     <div class="home-content">
-        <h1>Hola, mi nombre es <span>Luis</span></h1>
+        <h1>
+            Hola, mi nombre es <span>{firstName + " " + firstSurname}</span>
+        </h1>
         <h3 class="text-animation">
             Soy <span> </span>
         </h3>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-            corrupti sunt cupiditate accusamus aperiam hic reprehenderit dolorum
-            molestias cum. Quia, similique veritatis! Omnis amet veniam maxime
-            perspiciatis facilis aut ipsum eaque distinctio cupiditate aperiam
-            officia ad necessitatibus ratione, aliquid repellendus quas beatae
-            fugiat architecto saepe explicabo modi. Minus doloribus impedit
-            laudantium aut dolores labore maxime quis distinctio cum recusandae
-            soluta esse, vel nobis tenetur, magnam odit voluptatem dolor
-            expedita dolorum. Impedit, illo, non ullam nemo tempora atque odio
-            ducimus velit inventore cum nulla dolore temporibus alias aliquid
-            possimus, qui nobis optio est ratione rerum voluptates deleniti
-            commodi ea? Nihil fuga dolores incidunt, quisquam, magni corrupti
-            facilis suscipit beatae enim quia praesentium impedit saepe pariatur
-            a, deserunt nesciunt ratione optio debitis quo harum? Placeat neque
-            animi quod perspiciatis, tempora sunt odit sint. Harum impedit
-            praesentium ipsam fugit voluptate consequatur modi error dolorum a
-            magni quos voluptates deleniti itaque, reprehenderit quas libero
-            consequuntur dolor esse pariatur cum natus delectus optio veniam
-            exercitationem. Ratione, suscipit recusandae obcaecati ipsa
-            inventore quaerat minus id a iure, ex corporis, harum doloribus
-            totam ea facere tempora esse alias consequuntur. Inventore
-            aspernatur, mollitia libero quos aliquid soluta veritatis accusamus
-            est dolorum voluptas, nobis, molestias quaerat consectetur
-            blanditiis nihil?
+            {presentation}
         </p>
 
         <div class="social-icons">
-            <a href="#"><i class="bx bxl-linkedin"></i></a>
-            <a href="#"><i class="bx bxl-instagram"></i></a>
-            <a href="#"><i class="bx bxl-github"></i></a>
+            {
+                digitalPlataforms.map(
+                    (dp: {
+                        id: number;
+                        url: string;
+                        iconClassName: string;
+                    }) => (
+                        <a
+                            href={dp.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class={dp.iconClassName} />
+                        </a>
+                    ),
+                )
+            }
         </div>
 
         <div class="btn-group">
             <a href="#" class="btn"> Contratar </a>
-            <a href="#contact" class="btn"> Contact </a>
+            <a href="#contact" class="btn"> Contactar </a>
         </div>
     </div>
 

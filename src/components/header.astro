@@ -11,6 +11,7 @@
 
     <nav class="navbar">
         <a href="#home" class="active"> ¿Quien soy? </a>
+        <a href="#technologies"> Tecnologias </a>
         <a href="#education"> Educacion </a>
         <a href="#services"> Servicios </a>
         <a href="#testimonials"> Testimonios </a>
@@ -23,7 +24,7 @@
     let navbar = document.querySelector(".navbar") as HTMLElement;
     let sections = document.querySelectorAll("section");
     let navLinks = document.querySelectorAll("header nav a");
-    console.log(navbar);
+
     window.onscroll = () => {
         sections.forEach((sec) => {
             const section = sec as HTMLElement;
