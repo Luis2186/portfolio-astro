@@ -32,7 +32,7 @@ import Swal from "sweetalert2";
                     type="text"
                     id="sujetoCliente"
                     name="sujetoCliente"
-                    placeholder="Sujeto"
+                    placeholder="Asunto"
                 />
             </div>
         </div>
@@ -57,6 +57,32 @@ import Swal from "sweetalert2";
 
 <script>
     import Swal from "sweetalert2";
+
+    function ArmarCuerpoDeMensaje(
+        nombreCliente: string,
+        mensaje: string,
+        email: string,
+        telefono: string,
+        asunto: string,
+    ) {
+        return (
+            "Nombre de cliente: " +
+            nombreCliente +
+            "\n" +
+            "Correo electronico de cliente: " +
+            email +
+            "\n" +
+            "Telefono de cliente: " +
+            telefono +
+            "\n" +
+            "Asunto: " +
+            asunto +
+            "\n\n\n" +
+            "Mensaje: " +
+            mensaje +
+            "\n"
+        );
+    }
 
     function buildDataEmail(nombreCliente: string, mensaje: string) {
         // code fragment
@@ -160,11 +186,16 @@ import Swal from "sweetalert2";
                     return;
                 }
 
-                // Crear el objeto 'dataEmail' con los datos del formulario
-                const dataEmail = buildDataEmail(
+                const mensaje = ArmarCuerpoDeMensaje(
                     nombreCliente.value,
                     mensajeCliente.value,
+                    emailCliente.value,
+                    telefonoCliente.value,
+                    sujetoCliente.value,
                 );
+
+                // Crear el objeto 'dataEmail' con los datos del formulario
+                const dataEmail = buildDataEmail(nombreCliente.value, mensaje);
 
                 // Llamar a la función 'enviarCorreo' para enviar el correo
                 await enviarCorreo(dataEmail);
