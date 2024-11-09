@@ -1,8 +1,21 @@
+---
+import dataUser from "../store/dataUser";
+
+// Acceder al store y leer el valor de `fullName`
+const { digitalPlataforms } = dataUser;
+---
+
 <footer class="footer">
     <div class="social">
-        <a href="#"><i class="bx bxl-linkedin"></i></a>
-        <a href="#"><i class="bx bxl-instagram"></i></a>
-        <a href="#"><i class="bx bxl-github"></i></a>
+        {
+            digitalPlataforms.map(
+                (dp: { id: number; url: string; iconClassName: string }) => (
+                    <a href={dp.url} target="_blank" rel="noopener noreferrer">
+                        <i class={dp.iconClassName} />
+                    </a>
+                ),
+            )
+        }
     </div>
 
     <ul class="list">
