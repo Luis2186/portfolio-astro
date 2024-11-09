@@ -1,26 +1,176 @@
 ---
-
+import Swal from "sweetalert2";
 ---
 
 <section class="contact" id="contact">
-    <h2 class="heading">Contact <span> Me</span></h2>
+    <h2 class="heading">Contacta <span> Me</span></h2>
 
-    <form action="">
+    <form action="" id="form-contact">
         <div class="input-group">
             <div class="input-box">
-                <input type="text" placeholder="Nombre completo" />
-                <input type="email" placeholder="Correo electronico" />
+                <input
+                    type="text"
+                    id="nombreCliente"
+                    name="nombreCliente"
+                    placeholder="Nombre completo"
+                />
+                <input
+                    type="email"
+                    id="emailCliente"
+                    name="emailCliente"
+                    placeholder="Correo electronico"
+                />
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Numero de telefono" />
-                <input type="text" placeholder="Sujeto" />
+                <input
+                    type="number"
+                    id="telefonoCliente"
+                    name="telefonoCliente"
+                    placeholder="Numero de telefono"
+                />
+                <input
+                    type="text"
+                    id="sujetoCliente"
+                    name="sujetoCliente"
+                    placeholder="Sujeto"
+                />
             </div>
         </div>
 
         <div class="input-group-2">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Tu mensaje"
-            ></textarea>
-            <input type="submit" value="Enviar mensaje" class="btn" />
+            <textarea
+                name=""
+                id="mensajeCliente"
+                name="mensajeCliente"
+                cols="30"
+                rows="10"
+                placeholder="Tu mensaje"></textarea>
+            <input
+                type="submit"
+                value="Enviar mensaje"
+                class="btn"
+                id="btnCorreo"
+            />
         </div>
     </form>
 </section>
+
+<script>
+    import Swal from "sweetalert2";
+
+    function buildDataEmail(nombreCliente: string, mensaje: string) {
+        // code fragment
+        let data = {
+            service_id: "service_8vv0ubl",
+            template_id: "template_9v8p3dp",
+            user_id: "DPfew0PvvuApuWN9v",
+            template_params: {
+                from_name: nombreCliente,
+                message: mensaje,
+            },
+        };
+        return data;
+    }
+
+    async function enviarCorreo(data: object) {
+        try {
+            const response = await fetch(
+                "https://api.emailjs.com/api/v1.0/email/send",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                },
+            );
+
+            if (!response.ok) {
+                throw new Error("Error al enviar el correo");
+            }
+
+            Swal.fire({
+                customClass: {
+                    confirmButton: "btn swal-btn-confirm",
+                    cancelButton: "btn btn-danger",
+                    title: "swal-title",
+                    icon: "swal-icon",
+                    popup: "swal-popup",
+                },
+                background: "var(--bg-color)",
+                title: "¡Mensaje enviado correctamente!",
+                text: "Me comunicare contigo a la brevedad",
+                icon: "success",
+            });
+
+            return response;
+        } catch (error) {
+            Swal.fire({
+                customClass: {
+                    confirmButton: "btn swal-btn-confirm",
+                    cancelButton: "btn btn-danger",
+                    title: "swal-title",
+                    icon: "swal-icon",
+                    popup: "swal-popup",
+                },
+                background: "var(--bg-color)",
+                title: "¡Error!",
+                text: "Oops...El mensaje no se ah podido enviar",
+                icon: "error",
+            });
+        }
+    }
+    document
+        .querySelector("#btnCorreo")
+        ?.addEventListener("click", manejadorCorreoCliente);
+
+    async function manejadorCorreoCliente() {
+        document
+            .getElementById("form-contact")!
+            .addEventListener("submit", async function (e: any) {
+                e.preventDefault();
+
+                const formElements = e.target.elements;
+                const {
+                    nombreCliente,
+                    emailCliente,
+                    telefonoCliente,
+                    sujetoCliente,
+                    mensajeCliente,
+                } = formElements;
+
+                if (
+                    !nombreCliente.value ||
+                    !mensajeCliente.value ||
+                    !emailCliente.value
+                ) {
+                    Swal.fire({
+                        customClass: {
+                            confirmButton: "btn swal-btn-confirm",
+                            cancelButton: "btn btn-danger",
+                            title: "swal-title",
+                            icon: "swal-icon",
+                            popup: "swal-popup",
+                        },
+                        background: "var(--bg-color)",
+                        title: "¡Error!",
+                        text: "Los campos son obligatorios",
+                        icon: "error",
+                    });
+                    return;
+                }
+
+                // Crear el objeto 'dataEmail' con los datos del formulario
+                const dataEmail = buildDataEmail(
+                    nombreCliente.value,
+                    mensajeCliente.value,
+                );
+
+                // Llamar a la función 'enviarCorreo' para enviar el correo
+                await enviarCorreo(dataEmail);
+
+                // Limpiar el formulario después de enviar el mensaje
+                e.target.reset();
+            });
+    }
+</script>

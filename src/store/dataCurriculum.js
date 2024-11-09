@@ -5,19 +5,23 @@ const dataCurriculum ={
         {
             id:1,
             name:"C#",
+            urlInfo:"https://learn.microsoft.com/es-es/dotnet/csharp/",
             urlImg:"/public/img/cSharp.png"
         },
         {
             id:2,
             name:"JavaScript",
+            urlInfo:"https://developer.mozilla.org/en-US/docs/Web/JavaScript",
             urlImg:"/public/img/javascript.jpg"
         },        {
             id:3,
             name:"React",
+            urlInfo:"https://react.dev/",
             urlImg:"/public/img/react.png"
         },        {
             id:4,
-            name:"css",
+            name:"Css 3",
+            urlInfo:"https://developer.mozilla.org/en-US/docs/Web/CSS",
             urlImg:"/public/img/css.png"
         }
     ],
@@ -125,7 +129,7 @@ const dataCurriculum ={
         company: "UTE-TIC",
         title: "Tecnico",
         description:
-          "- Realice la actualización de la interfaz de usuario de la aplicación del cuadro de mando de la empresa,utilizando .NET Core con MVC y JavaScript, mejorando la usabilidad y la eficiencia del sistema. - Diseñé e implementé un script con Python para la extracción automatizada de información de recibos, planillas de BPS, planillas de MTSS y certificados, mediante expresiones regulares, optimizando el control del personal tercerizado. Esta solución permitió a la empresa no renovar la licencia del software previamente utilizado y ahorrar 30,000 dólares en costos.",
+          "- Actualización de la interfaz de usuario de la aplicación de cuadro de mando de la empresa, utilizando .NET Core con MVC y JavaScript. Esta mejora incrementó la usabilidad y la eficiencia del sistema, optimizando la experiencia del usuario y el rendimiento general. - Diseño e implementación de un script automatizado en Python para la extracción de información de recibos, planillas de BPS, MTSS y certificados, utilizando expresiones regulares. Esta solución permitió optimizar el control del personal tercerizado, eliminando la necesidad de renovar una licencia de software costoso, lo que resultó en un ahorro de $30,000 anuales para la empresa.",
       },
       {
         id: 2,

@@ -5,15 +5,29 @@ import dataCurriculum from "../store/dataCurriculum";
 const { technologies } = dataCurriculum;
 ---
 
-<section class="testimonials" id="technologies">
+<section class="technologies" id="technologies">
     <div class="testimonials-box">
         <h2 class="heading">Tecnologias</h2>
 
         <div class="technologies-container">
             {
                 technologies.map(
-                    (tec: { id: number; name: string; urlImg: string }) => (
-                        <img src={tec.urlImg} alt="" />
+                    (tec: {
+                        id: number;
+                        name: string;
+                        urlInfo: string;
+                        urlImg: string;
+                    }) => (
+                        <div class="technologies-item">
+                            <a
+                                href={tec.urlInfo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src={tec.urlImg} alt="" />
+                                <p> {tec.name} </p>
+                            </a>
+                        </div>
                     ),
                 )
             }
