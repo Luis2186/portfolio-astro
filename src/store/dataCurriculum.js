@@ -1,4 +1,3 @@
-import Technologies from "../pages/Technologies.astro";
 
 const dataCurriculum ={
     technologies: [
@@ -13,16 +12,24 @@ const dataCurriculum ={
             name:"JavaScript",
             urlInfo:"https://developer.mozilla.org/en-US/docs/Web/JavaScript",
             urlImg:"/public/img/javascript.jpg"
-        },        {
+        }, 
+        {
             id:3,
             name:"React",
             urlInfo:"https://react.dev/",
             urlImg:"/public/img/react.png"
-        },        {
+        },
+        {
             id:4,
             name:"Css 3",
             urlInfo:"https://developer.mozilla.org/en-US/docs/Web/CSS",
             urlImg:"/public/img/css.png"
+        },
+        {
+            id:5,
+            name:"Astro",
+            urlInfo:"https://docs.astro.build/en/getting-started/",
+            urlImg:"/public/img/Astro.png"
         }
     ],
     certificates: [
@@ -163,6 +170,24 @@ const dataCurriculum ={
         company: "Universidad ORT",
         title: "Analista Programador",
         description: "Finalice correctamente la carrera",
+        urlDocumentos:[
+            {
+                id:1,
+                title:"Titulos",
+                urlDocumento: "/public/docs/Titulos.pdf"
+            },
+            {
+                id:2,
+                title:"",
+                urlDocumento: ""
+            },
+            {
+                id:3,
+                title:"",
+                urlDocumento: ""
+            }
+        ],
+ 
       },
     ],
   }

@@ -2,40 +2,57 @@
 import dataCurriculum from "../store/dataCurriculum";
 
 // Acceder al store y leer el valor de `fullName`
-const { experiences } = dataCurriculum;
+const { formations } = dataCurriculum;
 ---
 
 <section class="education" id="education">
-    <h2 class="heading">Educacion</h2>
+    <h2 class="heading">Formación</h2>
 
     <div class="timeline-items">
         {
-            experiences.map(
+            formations.map(
                 (exp: {
                     id: number;
                     period: string;
                     company: string;
                     title: string;
                     description: string;
+                    urlDocumentos: any;
                 }) => (
                     // <i class='bx bxs-circle'></i>
                     <div class="timeline-item">
                         <div class="timeline-dot" />
                         <div class="timeline-date">
-                            {" "}
-                            {exp.company} | {exp.period}{" "}
+                            {exp.company} | {exp.period}
                         </div>
 
                         <div class="timeline-content">
                             <h3>{exp.title}</h3>
-                            {exp.description.split("-").map((des, index) =>
-                                index > 0 ? (
-                                    <p>
-                                        <i class="bx bxs-circle" /> {des}
-                                    </p>
-                                ) : (
-                                    ""
-                                ),
+                            <p>
+                                <i class="bx bxs-circle" /> {exp.description}
+                            </p>
+
+                            {exp.urlDocumentos.map(
+                                (doc: {
+                                    id: number;
+                                    title: string;
+                                    urlDocumento: string;
+                                }) =>
+                                    doc.title != "" ? (
+                                        <div class="timeline-footer">
+                                            <a
+                                                href={doc.urlDocumento}
+                                                download={doc.urlDocumento
+                                                    .split("/")
+                                                    .pop()}
+                                            >
+                                                {doc.title}{" "}
+                                                <i class="bx bxs-file-doc" />
+                                            </a>
+                                        </div>
+                                    ) : (
+                                        ""
+                                    ),
                             )}
                         </div>
                     </div>

@@ -45,22 +45,16 @@ const dataUser = {
   services: [
     {
       id: 1,
-      title: "Programación",
-      description: "Descripción de programación...",
+      title: "Desarrollo de Interfaces de Usuario",
+      description: "Diseño y desarrollo de interfaces de usuario interactivas y responsivas. Creo aplicaciones web modernas y escalables, con componentes reutilizables y una experiencia de usuario fluida, asegurando que funcionen perfectamente en dispositivos móviles y de escritorio.",
       iconClassName: "fa-solid fa-code",
     },
     {
       id: 2,
-      title: "Formación",
-      description: "Descripción de formación...",
+      title: "Desarrollo de APIs RESTful con C# y ASP.NET Core",
+      description: "Tengo experiencia creando APIs RESTful con C# y ASP.NET Core, diseñadas para manejar datos en tiempo real y facilitar la integración entre frontend y backend. Utilizo Entity Framework para la gestión de bases de datos y JWT para garantizar la seguridad de las aplicaciones.",
       iconClassName: "fa-solid fa-chalkboard-user",
-    },
-    {
-      id: 3,
-      title: "Desarrollo Web",
-      description: "Descripción de desarrollo web...",
-      iconClassName: "fa-solid fa-computer",
-    },
+    }
   ],
   activeService: {
     id: 0,

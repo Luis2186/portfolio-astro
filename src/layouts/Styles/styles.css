@@ -311,8 +311,14 @@ span {
 
 .education {
     padding: 100px 15px;
+    background: var(--bg-color);
+}
+
+.experiences {
+    padding: 100px 15px;
     background: var(--second-bg-color);
 }
+
 
 .education h2 {
     margin-bottom: 5rem;
@@ -402,6 +408,26 @@ span {
     line-height: 22px;
 }
 
+.timeline-footer {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    padding-top: 1rem;
+}
+
+.timeline-footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    gap: 1rem;
+    color: var(--main-color);
+}
+
+.timeline-footer i {
+    font-size: 40px !important;
+}
+
 .timeline-content i {
     font-size: 8px;
     color: var(--main-color);
@@ -425,6 +451,7 @@ span {
 .services {
     background: var(--bg-color);
     color: black;
+
 }
 
 .services h2 {
@@ -479,6 +506,127 @@ span {
     margin: auto;
 }
 
+/* ------------------------  Projects  ------------------------  */
+.projects {
+    background: var(--second-bg-color);
+}
+
+.projects-box {
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.projects .heading {
+    margin-bottom: 5rem;
+}
+
+.projects-box img {
+    align-self: center;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 10%;
+    border: 3px solid var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    object-fit: cover;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.projects-item {
+    min-height: 550px;
+    max-width: 450px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid rgba(238, 238, 238, 0.2);
+    border-radius: 2rem;
+    margin: 0 2rem;
+    padding: 30px 60px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+
+.projects-item:hover {
+    border: 3px solid var(--main-color);
+    transform: translateY(-10px)scale(1.03);
+    box-shadow: 0 0 50px var(--main-color);
+}
+
+.item-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.projects-item>.item-header a {
+    align-self: flex-end;
+    font-size: 20px;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.projects-item>.item-header a:hover {
+    transform: scale(1.2)translateY(-10px);
+    background-color: var(--main-color);
+    color: black;
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.projects-item h2 {
+    font-size: 2.8rem;
+}
+
+.projects-item p {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    text-align: justify;
+    width: 100%;
+    height: 8rem;
+}
+
+.item-container_img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+.item-container_img img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+}
+
+.item-container_img h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var(--main-color)
+}
+
 /* ------------------------  Testimonials  ------------------------  */
 
 .testimonials {
@@ -497,31 +645,17 @@ span {
     margin-bottom: 5rem;
 }
 
-.testimonials-box img {
-    width: 15rem;
-    border-radius: 50%;
-    border: 3px solid var(--main-color);
-    box-shadow: 0 0 25px var(--main-color);
-}
-
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
 }
 
-.technologies-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5rem;
-    padding: 4rem 0rem;
-}
-
-.technologies-container img {
-    width: 250px;
-    object-fit: cover;
-    height: 250px;
-
+.testimonials-box img {
+    width: 15rem;
+    border-radius: 50%;
+    border: 3px solid var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
 }
 
 .testimonial-item {
@@ -566,7 +700,7 @@ span {
 
 
 .technologies {
-    background: var(--bg-color);
+    background: var(--second-bg-color);
 }
 
 .technologies-box {
@@ -590,15 +724,15 @@ span {
 
 .technologies-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
     padding: 4rem 0rem;
 }
 
 .technologies-container img {
-    width: 250px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
-    height: 250px;
 }
 
 .technologies-container p {
@@ -609,8 +743,8 @@ span {
 
 
 .technologies-item {
-    min-height: 450px;
-    max-width: 350px;
+    min-height: 350px;
+    max-width: 250px;
     background: rgba(0, 0, 0, 0.7);
     border: 3px solid rgba(238, 238, 238, 0.2);
     border-radius: 2rem;
@@ -693,7 +827,7 @@ span {
     border: 3px solid var(--main-color) !important;
     font-size: 16px !important;
     color: var(--text-color) !important;
-    background: black,
+
 }
 
 .swal-btn-confirm {
@@ -787,6 +921,20 @@ span {
         grid-template-columns: repeat(2, 1fr);
         margin: 0 5rem;
     }
+
+    .technologies-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5rem;
+        padding: 4rem 0rem;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
 }
 
 @media (max-width:991px) {
@@ -831,6 +979,14 @@ span {
     .footer {
         padding: 2rem 3%;
     }
+
+    .technologies-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+        padding: 4rem 0rem;
+    }
+
 }
 
 @media(max-width:895px) {
@@ -894,4 +1050,25 @@ span {
         grid-template-columns: repeat(1, 1fr);
     }
 
+
+    .technologies-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+        padding: 4rem 0rem;
+    }
+
+    .technologies-item {
+        min-height: 250px;
+    }
+
+    .testimonials .wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .projects .wrapper {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+    }
 }

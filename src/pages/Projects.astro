@@ -1,0 +1,37 @@
+---
+import dataProjects from "../store/dataProjects";
+
+const { projects } = dataProjects;
+---
+
+<section class="projects" id="projects">
+    <div class="projects-box">
+        <h2 class="heading">Proyectos</h2>
+
+        <div class="projects-container">
+            {
+                projects.map((project) => (
+                    <div class="projects-item">
+                        <div class="item-header">
+                            <a href={project.urlGitHub} target="_blank">
+                                <i class="bx bxl-github" />
+                            </a>
+
+                            <img src={project.imgUrl} alt="" />
+                        </div>
+
+                        <h2>{project.name}</h2>
+
+                        <p>{project.descriptionCorta}</p>
+                        <div class="item-container_img">
+                            <h1>Stack</h1>
+                            {project.stackTechnologies.map((tec) => (
+                                <img src={tec.urlImg} />
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

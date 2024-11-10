@@ -1,0 +1,45 @@
+---
+import dataCurriculum from "../store/dataCurriculum";
+
+// Acceder al store y leer el valor de `fullName`
+const { experiences } = dataCurriculum;
+---
+
+<section class="experiences" id="experiences">
+    <h2 class="heading">Experiencia</h2>
+
+    <div class="timeline-items">
+        {
+            experiences.map(
+                (exp: {
+                    id: number;
+                    period: string;
+                    company: string;
+                    title: string;
+                    description: string;
+                }) => (
+                    // <i class='bx bxs-circle'></i>
+                    <div class="timeline-item">
+                        <div class="timeline-dot" />
+                        <div class="timeline-date">
+                            {exp.company} | {exp.period}
+                        </div>
+
+                        <div class="timeline-content">
+                            <h3>{exp.title}</h3>
+                            {exp.description.split("-").map((des, index) =>
+                                index > 0 ? (
+                                    <p>
+                                        <i class="bx bxs-circle" /> {des}
+                                    </p>
+                                ) : (
+                                    ""
+                                ),
+                            )}
+                        </div>
+                    </div>
+                ),
+            )
+        }
+    </div>
+</section>
