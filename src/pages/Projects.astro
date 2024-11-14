@@ -1,9 +1,21 @@
 ---
 import dataProjects from "../store/dataProjects";
+import Popup from "../components/Popup.astro";
 
 const { projects } = dataProjects;
 ---
 
+{
+    projects.map((project) => (
+        <Popup
+            name={project.name}
+            descripcion={project.descriptionCompleta}
+            img={project.imgUrl}
+            idProyecto={project.id}
+            stackTechnologies={project.stackTechnologies}
+        />
+    ))
+}
 <section class="projects" id="projects">
     <div class="projects-box">
         <h2 class="heading">Proyectos</h2>
@@ -11,7 +23,7 @@ const { projects } = dataProjects;
         <div class="projects-container">
             {
                 projects.map((project) => (
-                    <div class="projects-item">
+                    <div class="projects-item" id={"" + project.id}>
                         <div class="item-header">
                             <a href={project.urlGitHub} target="_blank">
                                 <i class="bx bxl-github" />
@@ -23,6 +35,7 @@ const { projects } = dataProjects;
                         <h2>{project.name}</h2>
 
                         <p>{project.descriptionCorta}</p>
+
                         <div class="item-container_img">
                             <h1>Stack</h1>
                             {project.stackTechnologies.map((tec) => (
@@ -35,3 +48,30 @@ const { projects } = dataProjects;
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const proyectos = document.querySelectorAll(".projects-item");
+
+        // Recorremos cada proyecto
+        proyectos.forEach((element) => {
+            let idProyecto = parseInt(element.id);
+            element.addEventListener("click", () => abrirPopup(idProyecto));
+        });
+
+        function abrirPopup(idProyecto: number) {
+            const idPopup = "popup" + idProyecto;
+            const idClosePopup = "close-btn" + idProyecto;
+
+            // Seleccionamos el popup y el botón de cerrar
+            const popup = document.getElementById(idPopup);
+            const closePopupBtn = document.getElementById(idClosePopup);
+
+            popup!.style.display = "block";
+
+            closePopupBtn!.addEventListener("click", () => {
+                popup!.style.display = "none";
+            });
+        }
+    });
+</script>
